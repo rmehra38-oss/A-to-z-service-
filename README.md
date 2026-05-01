@@ -12,6 +12,7 @@ View your app in AI Studio: https://ai.studio/apps/878438ef-1cbc-4f64-841a-a0e3f
 
 **Prerequisites:**  Node.js
 
+![Alt text for image](chatGPT Image May 1, 2026, 12_01_25 PM.png)
 
 1. Install dependencies:
    `npm install`

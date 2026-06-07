@@ -129,7 +129,7 @@ export default function HomePage() {
                 Don't let a broken appliance ruin your day. We provide fast, reliable, and affordable repair services for all your home appliances in Gurgaon.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-5">
+              <div className="flex flex-col sm:flex-row gap-5 md:hidden">
                 <a 
                   href={whatsappLink}
                   target="_blank"
@@ -253,7 +253,7 @@ export default function HomePage() {
 
       {/* Services Preview */}
       <section id="services" className="py-32 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-orange-500 font-black uppercase tracking-[0.25em] text-sm mb-4">Our Expertise</h2>
             <h3 className="text-4xl md:text-6xl font-extrabold text-navy-900 mb-6 tracking-tight">Professional Repair Solutions</h3>

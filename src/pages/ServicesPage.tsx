@@ -62,7 +62,18 @@ const guarantees = [
 ];
 
 const brands = [
-  "Samsung", "LG", "Whirlpool", "Daikin", "Voltas", "Blue Star", "Hitachi", "Haier", "Lloyd", "Panasonic", "Godrej", "Mitsubishi"
+  { name: "Samsung", logo: "https://logo.clearbit.com/samsung.com" },
+  { name: "LG", logo: "https://logo.clearbit.com/lg.com" },
+  { name: "Whirlpool", logo: "https://logo.clearbit.com/whirlpool.com" },
+  { name: "Daikin", logo: "https://logo.clearbit.com/daikin.com" },
+  { name: "Voltas", logo: "https://logo.clearbit.com/voltas.com" },
+  { name: "Blue Star", logo: "https://logo.clearbit.com/bluestarindia.com" },
+  { name: "Hitachi", logo: "https://logo.clearbit.com/hitachi.com" },
+  { name: "Haier", logo: "https://logo.clearbit.com/haier.com" },
+  { name: "Lloyd", logo: "https://logo.clearbit.com/mylloyd.com" },
+  { name: "Panasonic", logo: "https://logo.clearbit.com/panasonic.com" },
+  { name: "Godrej", logo: "https://logo.clearbit.com/godrej.com" },
+  { name: "Mitsubishi", logo: "https://logo.clearbit.com/mitsubishielectric.com" }
 ];
 
 export default function ServicesPage() {
@@ -185,11 +196,26 @@ export default function ServicesPage() {
             <h3 className="text-3xl md:text-5xl font-black text-navy-900 mb-4 tracking-tight">Brands We Service</h3>
             <p className="text-slate-500 font-medium">We provide expert repair and service for all major air conditioner brands.</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 px-8">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10 px-8">
             {brands.map((brand, i) => (
-              <div key={i} className="bg-slate-50 px-8 py-4 rounded-2xl border border-slate-100 text-navy-900 font-black text-lg hover:orange-gradient hover:text-white transition-all cursor-default shadow-sm">
-                {brand}
-              </div>
+              <motion.div 
+                key={i} 
+                whileHover={{ y: -5, scale: 1.05 }}
+                className="bg-slate-50 p-6 rounded-[2rem] border border-slate-100 flex flex-col items-center justify-center gap-4 hover:shadow-xl hover:bg-white transition-all cursor-default group w-40 h-40 shadow-sm"
+              >
+                <div className="w-20 h-20 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <img 
+                    src={brand.logo} 
+                    alt={`${brand.name} logo`} 
+                    className="max-w-full max-h-full object-contain"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${brand.name}&background=f8fafc&color=0f172a&bold=true&size=128`;
+                    }}
+                  />
+                </div>
+                <span className="text-navy-900 font-black text-sm uppercase tracking-widest">{brand.name}</span>
+              </motion.div>
             ))}
           </div>
         </div>

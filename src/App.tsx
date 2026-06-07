@@ -13,6 +13,9 @@ const WhyUsPage = lazy(() => import('./pages/WhyUsPage'));
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const SeoBlogPage = lazy(() => import('./pages/SeoBlogPage'));
+const LocationPage = lazy(() => import('./pages/LocationPage'));
+const FaqHubPage = lazy(() => import('./pages/FaqHubPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,9 +39,9 @@ function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
-    { name: 'About Us', path: '/about' },
+    { name: 'Localities', path: '/location/dlf-gurgaon' },
+    { name: 'FAQs', path: '/faqs' },
     { name: 'Why Us', path: '/why-us' },
-    { name: 'Portfolio', path: '/portfolio' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -136,13 +139,13 @@ function Footer() {
           
           <div>
             <h4 className="text-navy-900 font-black uppercase tracking-[0.3em] text-[10px] mb-10">Quick Links</h4>
-            <ul className="space-y-5">
+            <ul className="space-y-4">
               {[
                 { name: 'Home', path: '/' },
-                { name: 'Services', path: '/services' },
-                { name: 'About Us', path: '/about' },
-                { name: 'Why Us', path: '/why-us' },
-                { name: 'Portfolio', path: '/portfolio' },
+                { name: 'Services Hub', path: '/services' },
+                { name: 'Gurgaon Localities', path: '/location/dlf-gurgaon' },
+                { name: 'Troubleshooting FAQs', path: '/faqs' },
+                { name: 'AC Repair SEO Guide', path: '/blog/ac-repair-gurgaon' },
                 { name: 'Privacy Policy', path: '/privacy-policy' }
               ].map(link => (
                 <li key={link.path}>
@@ -247,6 +250,9 @@ export default function App() {
               <Route path="/portfolio" element={<PortfolioPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/blog/ac-repair-gurgaon" element={<SeoBlogPage />} />
+              <Route path="/location/dlf-gurgaon" element={<LocationPage />} />
+              <Route path="/faqs" element={<FaqHubPage />} />
             </Routes>
           </Suspense>
         </main>

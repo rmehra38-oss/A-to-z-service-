@@ -25,7 +25,7 @@ export default function SeoBlogPage() {
       },
       "headline": "Ultimate Guide to AC Repair Service in Gurgaon: Top Fixes, Costs & Expert Tips",
       "description": "Looking for the best AC Repair Service in Gurgaon? Read our comprehensive 2026 guide on Split and Window AC repair cost, gas filling charges, and finding a certified AC technician near you.",
-      "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200",  
+      "image": "https://gurgaonacservice.com/images/ac_service_trust_1781463500392.jpg",  
       "author": {
         "@type": "Organization",
         "name": "ASAP Gurgaon AC Service Support Team",
@@ -188,7 +188,7 @@ export default function SeoBlogPage() {
         {/* Feature Image */}
         <div className="rounded-[4rem] overflow-hidden mb-16 border-[12px] border-white shadow-2xl h-[450px]">
           <img 
-            src="https://images.unsplash.com/photo-1621905252507-b35216cf445a?auto=format&fit=crop&q=80&w=1200" 
+            src="/images/ac_service_trust_1781463500392.jpg" 
             alt="Professional cooling technician testing split AC filter and refrigerant gas pressures in Gurgaon sector home" 
             className="w-full h-full object-cover"
           />

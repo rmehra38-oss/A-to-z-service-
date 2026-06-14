@@ -5,25 +5,25 @@ const portfolioItems = [
   {
     title: 'Split AC Installation',
     location: 'Sector 56, Gurgaon',
-    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800',
+    image: '/images/ac_service_trust_1781463500392.jpg',
     description: 'Professional installation of a 1.5 Ton inverter AC with precise copper piping and outdoor unit mounting.'
   },
   {
     title: 'Washing Machine Repair',
     location: 'Sector 45, Gurgaon',
-    image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&q=80&w=800',
+    image: '/images/service_washing_machine_repair_1781461892008.jpg',
     description: 'Fixed a front-load washing machine with motor issues. Restored to full functionality within 2 hours.'
   },
   {
     title: 'Refrigerator Servicing',
     location: 'DLF Phase 3, Gurgaon',
-    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=800',
+    image: '/images/service_refrigerator_repair_1781461875534.jpg',
     description: 'Expert gas refilling and compressor maintenance for a double-door refrigerator.'
   },
   {
     title: 'AC Jet Cleaning',
     location: 'Wazirabad, Gurgaon',
-    image: 'https://images.unsplash.com/photo-1558403194-611308249627?auto=format&fit=crop&q=80&w=800',
+    image: '/images/service_ac_repair_1781461907198.jpg',
     description: 'Deep foam and jet cleaning service for a window AC unit, significantly improving cooling efficiency.'
   }
 ];

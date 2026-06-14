@@ -79,7 +79,7 @@ export default function LocationPage() {
       "@context": "https://schema.org",
       "@type": "HVACBusiness",
       "name": "ASAP Gurgaon AC Service",
-      "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200",
+      "image": "https://gurgaonacservice.com/images/ac_service_trust_1781463500392.jpg",
       "@id": "https://gurgaonacservice.com/#hvac-business",
       "url": "https://gurgaonacservice.com",
       "telephone": "+91-70563-30400",

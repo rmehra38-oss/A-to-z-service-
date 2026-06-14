@@ -11,21 +11,21 @@ const services = [
     description: 'Expert cooling solutions for all brands. We fix compressors, gas leaks, and thermostat issues.',
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-fridge',
-    image: '/src/assets/images/service_refrigerator_repair_1781461875534.jpg'
+    image: '/images/service_refrigerator_repair_1781461875534.jpg'
   },
   {
     title: 'Washing Machine Repair',
     description: 'Top load, front load, or semi-automatic. We resolve drum issues, motor failures, and PCB repairs.',
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-washing',
-    image: '/src/assets/images/service_washing_machine_repair_1781461892008.jpg'
+    image: '/images/service_washing_machine_repair_1781461892008.jpg'
   },
   {
     title: 'AC Repair & Service',
     description: 'Stay cool with our professional AC servicing, gas charging, and installation services.',
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-ac',
-    image: '/src/assets/images/service_ac_repair_1781461907198.jpg'
+    image: '/images/service_ac_repair_1781461907198.jpg'
   }
 ];
 
@@ -191,7 +191,7 @@ export default function HomePage() {
             >
               <div className="relative z-10 rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border-[8px] md:border-[16px] border-white aspect-[16/10]">
                 <img 
-                  src="/src/assets/images/hero_technicians_landscape_1781462956080.jpg" 
+                  src="/images/hero_technicians_landscape_1781462956080.jpg" 
                   alt="Technicians at work repairing refrigerator and washing machine" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

@@ -79,7 +79,7 @@ export default function WhyUsPage() {
           <div className="relative">
             <div className="rounded-[4rem] overflow-hidden shadow-3xl border-[16px] border-white aspect-video">
               <img 
-                src="/src/assets/images/ac_service_trust_1781463500392.jpg" 
+                src="/images/ac_service_trust_1781463500392.jpg" 
                 alt="Professional Service" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

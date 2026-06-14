@@ -36,7 +36,7 @@ export default function AboutPage() {
           >
             <div className="rounded-[4rem] overflow-hidden shadow-3xl border-[16px] border-slate-50 aspect-square">
               <img 
-                src="/src/assets/images/hero_technicians_clean_1781462453079.jpg" 
+                src="/images/hero_technicians_clean_1781462453079.jpg" 
                 alt="Our Team" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

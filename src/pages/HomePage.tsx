@@ -2,7 +2,7 @@ import {
   Phone, ShieldCheck, Clock, Award, Star, Users, Zap, ArrowRight, MessageCircle, ChevronDown, MapPin, Mail, Wind
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const services = [
@@ -35,21 +35,21 @@ const testimonials = [
     role: 'Gurgaon Resident',
     text: 'A to Z Service is my go-to for appliance repair. They fixed my refrigerator within 2 hours of calling. Highly recommended!',
     rating: 5,
-    avatar: 'https://i.pravatar.cc/150?u=rahul'
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250&h=250'
   },
   {
     name: 'Priya Verma',
     role: 'Sector 56',
     text: 'Very professional and polite technicians. They explained the issue clearly and charged a fair price for my washing machine repair.',
     rating: 5,
-    avatar: 'https://i.pravatar.cc/150?u=priya'
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=250&h=250'
   },
   {
     name: 'Amit Gupta',
     role: 'Wazirabad',
     text: 'Excellent AC service. My AC is cooling like new again. The technician was very thorough and cleaned everything properly.',
     rating: 5,
-    avatar: 'https://i.pravatar.cc/150?u=amit'
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=250&h=250'
   }
 ];
 
@@ -98,6 +98,25 @@ const faqs = [
 export default function HomePage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const whatsappLink = "https://wa.me/917056330400?text=I'm%20interested%20in%20your%20services";
+
+  // State for quote form submission
+  const [formName, setFormName] = useState('');
+  const [formPhone, setFormPhone] = useState('');
+  const [formService, setFormService] = useState('Refrigerator Repair');
+  const [formMessage, setFormMessage] = useState('');
+  const [quoteState, setQuoteState] = useState<'idle' | 'sending' | 'success'>('idle');
+
+  const handleQuoteSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formName.trim() || !formPhone.trim()) {
+      alert('Please enter your Name and Phone Number to request a free quote.');
+      return;
+    }
+    setQuoteState('sending');
+    setTimeout(() => {
+      setQuoteState('success');
+    }, 1000);
+  };
 
   return (
     <>
@@ -347,7 +366,12 @@ export default function HomePage() {
                 </div>
                 <p className="text-navy-800 text-xl font-medium italic mb-10 leading-relaxed relative z-10">"{t.text}"</p>
                 <div className="flex items-center gap-5">
-                  <img src={t.avatar} className="w-16 h-16 rounded-2xl object-cover shadow-lg" loading="lazy" />
+                  <img 
+                    src={t.avatar} 
+                    className="w-16 h-16 rounded-2xl object-cover shadow-lg" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer" 
+                  />
                   <div>
                     <p className="text-lg font-black text-navy-900">{t.name}</p>
                     <p className="text-sm font-black text-orange-500 uppercase tracking-widest">{t.role}</p>
@@ -407,37 +431,102 @@ export default function HomePage() {
                 <h3 className="text-4xl md:text-5xl font-black text-navy-900 mb-6 tracking-tight">Get a Free Quote</h3>
                 <p className="text-slate-500 mb-12 text-lg font-medium">Fill out the form below and we'll get back to you within 15 minutes.</p>
                 
-                <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-                  <div className="grid sm:grid-cols-2 gap-8">
-                    <div className="space-y-3">
-                      <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">Full Name</label>
-                      <input type="text" className="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500 focus:bg-white px-8 py-5 rounded-2xl outline-none transition-all font-bold text-navy-900 shadow-sm" placeholder="John Doe" />
+                {quoteState === 'success' ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-green-50 border border-green-200 rounded-[2.5rem] p-10 text-center space-y-6"
+                  >
+                    <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-green-500/20">
+                      <ShieldCheck className="w-10 h-10 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-2xl font-black text-navy-900 mb-2">Quote Request Submitted!</h4>
+                      <p className="text-slate-600 font-medium leading-relaxed">
+                        Thank you, <span className="font-bold text-navy-950">{formName}</span>. We have received your request for <span className="font-bold text-orange-600">{formService}</span>.
+                      </p>
+                      <p className="text-slate-600 font-medium leading-relaxed mt-2">
+                        Our expert technician will contact you on <span className="font-bold text-navy-950">{formPhone}</span> within 15 minutes to coordinate the visit.
+                      </p>
+                    </div>
+                    <button 
+                      onClick={() => {
+                        setFormName('');
+                        setFormPhone('');
+                        setFormMessage('');
+                        setQuoteState('idle');
+                      }}
+                      className="px-8 py-4 bg-navy-900 text-white font-black rounded-xl text-sm uppercase tracking-wider hover:bg-navy-800 transition-colors animate-pulse"
+                    >
+                      Request Another Service
+                    </button>
+                  </motion.div>
+                ) : (
+                  <form className="space-y-8" onSubmit={handleQuoteSubmit}>
+                    <div className="grid sm:grid-cols-2 gap-8">
+                      <div className="space-y-3">
+                        <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">Full Name</label>
+                        <input 
+                          type="text" 
+                          required
+                          value={formName}
+                          onChange={(e) => setFormName(e.target.value)}
+                          className="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500 focus:bg-white px-8 py-5 rounded-2xl outline-none transition-all font-bold text-navy-900 shadow-sm" 
+                          placeholder="John Doe" 
+                        />
+                      </div>
+                      <div className="space-y-3">
+                        <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">Phone Number</label>
+                        <input 
+                          type="tel" 
+                          required
+                          value={formPhone}
+                          onChange={(e) => setFormPhone(e.target.value)}
+                          className="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500 focus:bg-white px-8 py-5 rounded-2xl outline-none transition-all font-bold text-navy-900 shadow-sm" 
+                          placeholder="+91 00000 00000" 
+                        />
+                      </div>
                     </div>
                     <div className="space-y-3">
-                      <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">Phone Number</label>
-                      <input type="tel" className="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500 focus:bg-white px-8 py-5 rounded-2xl outline-none transition-all font-bold text-navy-900 shadow-sm" placeholder="+91 00000 00000" />
+                      <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">Service Required</label>
+                      <div className="relative">
+                        <select 
+                          value={formService}
+                          onChange={(e) => setFormService(e.target.value)}
+                          className="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500 focus:bg-white px-8 py-5 rounded-2xl outline-none transition-all font-bold text-navy-900 shadow-sm appearance-none cursor-pointer"
+                        >
+                          <option value="Refrigerator Repair">Refrigerator Repair</option>
+                          <option value="Washing Machine Repair">Washing Machine Repair</option>
+                          <option value="AC Repair & Service">AC Repair & Service</option>
+                          <option value="Other Appliance">Other Appliance</option>
+                        </select>
+                        <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-orange-500 pointer-events-none" />
+                      </div>
                     </div>
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">Service Required</label>
-                    <div className="relative">
-                      <select className="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500 focus:bg-white px-8 py-5 rounded-2xl outline-none transition-all font-bold text-navy-900 shadow-sm appearance-none cursor-pointer">
-                        <option>Refrigerator Repair</option>
-                        <option>Washing Machine Repair</option>
-                        <option>AC Repair & Service</option>
-                        <option>Other Appliance</option>
-                      </select>
-                      <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-orange-500 pointer-events-none" />
+                    <div className="space-y-3">
+                      <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">Your Message</label>
+                      <textarea 
+                        rows={4} 
+                        value={formMessage}
+                        onChange={(e) => setFormMessage(e.target.value)}
+                        className="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500 focus:bg-white px-8 py-5 rounded-2xl outline-none transition-all font-bold text-navy-900 shadow-sm" 
+                        placeholder="Describe the issue... (e.g. AC not cooling, refrigerator making noise)"
+                      ></textarea>
                     </div>
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">Your Message</label>
-                    <textarea rows={4} className="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500 focus:bg-white px-8 py-5 rounded-2xl outline-none transition-all font-bold text-navy-900 shadow-sm" placeholder="Describe the issue..."></textarea>
-                  </div>
-                  <button className="w-full orange-gradient hover:shadow-orange-500/40 text-white py-6 rounded-2xl font-black text-xl transition-all shadow-xl shadow-orange-500/20 transform hover:-translate-y-1">
-                    Send Request
-                  </button>
-                </form>
+                    <button 
+                      type="submit"
+                      disabled={quoteState === 'sending'}
+                      className="w-full orange-gradient hover:shadow-orange-500/40 text-white py-6 rounded-2xl font-black text-xl transition-all shadow-xl shadow-orange-500/20 transform hover:-translate-y-1 flex items-center justify-center gap-3 disabled:opacity-50"
+                    >
+                      {quoteState === 'sending' ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Sending Request...
+                        </>
+                      ) : 'Send Request'}
+                    </button>
+                  </form>
+                )}
               </div>
               
               <div className="bg-navy-900 p-12 md:p-24 text-white relative overflow-hidden flex flex-col justify-center">

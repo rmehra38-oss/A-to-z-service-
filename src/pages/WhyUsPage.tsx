@@ -79,7 +79,7 @@ export default function WhyUsPage() {
           <div className="relative">
             <div className="rounded-[4rem] overflow-hidden shadow-3xl border-[16px] border-white aspect-video">
               <img 
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1000" 
+                src="/src/assets/images/service_quality_trust_1781463296163.jpg" 
                 alt="Professional Service" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

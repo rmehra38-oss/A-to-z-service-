@@ -1,8 +1,8 @@
 import { 
-  Phone, ShieldCheck, Clock, Award, Star, Users, Zap, ArrowRight, MessageCircle, ChevronDown, MapPin, Mail, Wind
+  Phone, ShieldCheck, Clock, Award, Star, Users, Zap, ArrowRight, MessageCircle, ChevronDown, MapPin, Mail, Wind, UploadCloud, Image as ImageIcon, X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const services = [
@@ -11,21 +11,21 @@ const services = [
     description: 'Expert cooling solutions for all brands. We fix compressors, gas leaks, and thermostat issues.',
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-fridge',
-    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=800'
+    image: '/src/assets/images/service_refrigerator_repair_1781461875534.jpg'
   },
   {
     title: 'Washing Machine Repair',
     description: 'Top load, front load, or semi-automatic. We resolve drum issues, motor failures, and PCB repairs.',
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-washing',
-    image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&q=80&w=800'
+    image: '/src/assets/images/service_washing_machine_repair_1781461892008.jpg'
   },
   {
     title: 'AC Repair & Service',
     description: 'Stay cool with our professional AC servicing, gas charging, and installation services.',
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-ac',
-    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800'
+    image: '/src/assets/images/service_ac_repair_1781461907198.jpg'
   }
 ];
 
@@ -33,7 +33,7 @@ const testimonials = [
   {
     name: 'Rahul Sharma',
     role: 'Gurgaon Resident',
-    text: 'A to Z Service is my go-to for appliance repair. They fixed my refrigerator within 2 hours of calling. Highly recommended!',
+    text: 'ASAP GURGAON AC SERVICE is my go-to for appliance repair. They fixed my refrigerator within 2 hours of calling. Highly recommended!',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250&h=250'
   },
@@ -105,6 +105,21 @@ export default function HomePage() {
   const [formService, setFormService] = useState('Refrigerator Repair');
   const [formMessage, setFormMessage] = useState('');
   const [quoteState, setQuoteState] = useState<'idle' | 'sending' | 'success'>('idle');
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (file: File) => {
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target?.result) {
+          setUploadedImage(e.target.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleQuoteSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -174,10 +189,10 @@ export default function HomePage() {
               transition={{ duration: 1, type: "spring" }}
               className="relative"
             >
-              <div className="relative z-10 rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border-[16px] border-white aspect-square">
+              <div className="relative z-10 rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border-[8px] md:border-[16px] border-white aspect-[16/10]">
                 <img 
-                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Technician at work" 
+                  src="/src/assets/images/hero_technicians_landscape_1781462956080.jpg" 
+                  alt="Technicians at work repairing refrigerator and washing machine" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                   loading="lazy"
@@ -435,31 +450,75 @@ export default function HomePage() {
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-green-50 border border-green-200 rounded-[2.5rem] p-10 text-center space-y-6"
+                    className="bg-green-50/50 border border-green-100 rounded-[2.5rem] p-8 md:p-10 text-center space-y-6"
                   >
-                    <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-green-500/20">
-                      <ShieldCheck className="w-10 h-10 text-white" />
+                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-green-500/20">
+                      <ShieldCheck className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <h4 className="text-2xl font-black text-navy-900 mb-2">Quote Request Submitted!</h4>
-                      <p className="text-slate-600 font-medium leading-relaxed">
-                        Thank you, <span className="font-bold text-navy-950">{formName}</span>. We have received your request for <span className="font-bold text-orange-600">{formService}</span>.
-                      </p>
-                      <p className="text-slate-600 font-medium leading-relaxed mt-2">
-                        Our expert technician will contact you on <span className="font-bold text-navy-950">{formPhone}</span> within 15 minutes to coordinate the visit.
+                      <h4 className="text-2xl font-black text-navy-900 mb-2">Quote Details Prepared!</h4>
+                      <p className="text-slate-600 font-medium leading-relaxed text-sm md:text-base">
+                        Thank you, <span className="font-bold text-navy-950">{formName}</span>. We've compiled your request for <span className="font-bold text-orange-600">{formService}</span>.
                       </p>
                     </div>
-                    <button 
-                      onClick={() => {
-                        setFormName('');
-                        setFormPhone('');
-                        setFormMessage('');
-                        setQuoteState('idle');
-                      }}
-                      className="px-8 py-4 bg-navy-900 text-white font-black rounded-xl text-sm uppercase tracking-wider hover:bg-navy-800 transition-colors animate-pulse"
-                    >
-                      Request Another Service
-                    </button>
+
+                    {uploadedImage && (
+                      <div className="bg-white rounded-3xl p-6 border border-slate-100 text-center space-y-4 shadow-sm w-full max-w-[285px] mx-auto">
+                        <p className="font-bold text-navy-900 text-xs uppercase tracking-widest text-slate-500">Your Uploaded Photo</p>
+                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                          <img 
+                            src={uploadedImage} 
+                            alt="Uploaded appliance issue" 
+                            className="w-full h-full object-cover" 
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="bg-white rounded-3xl p-6 border border-slate-100 text-left space-y-4 shadow-sm">
+                      <p className="font-bold text-navy-900 text-xs uppercase tracking-widest text-center text-slate-500">Dispatch Your Quote Directly</p>
+                      
+                      <div className="grid gap-3">
+                        <a 
+                          href={`https://wa.me/917056330400?text=${encodeURIComponent(
+                            `Hello ASAP GURGAON AC SERVICE, I would like to request a free quote:\n\n• Name: ${formName}\n• Phone: ${formPhone}\n• Service: ${formService}\n• Details: ${formMessage || 'N/A'}${uploadedImage ? '\n• [Photo Attached in App State]' : ''}`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-4 px-6 rounded-2xl font-black text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md shadow-green-500/10 hover:shadow-green-500/25 cursor-pointer"
+                        >
+                          <MessageCircle className="w-5 h-5 fill-current" />
+                          Send to us via WhatsApp
+                        </a>
+
+                        <a 
+                          href={`sms:+917056330400?body=${encodeURIComponent(
+                            `Hello ASAP GURGAON AC SERVICE, I would like to request a free quote:\n\n• Name: ${formName}\n• Phone: ${formPhone}\n• Service: ${formService}\n• Details: ${formMessage || 'N/A'}${uploadedImage ? '\n• [Photo Attached in App State]' : ''}`
+                          )}`}
+                          className="w-full bg-navy-900 hover:bg-navy-850 text-white py-4 px-6 rounded-2xl font-black text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md shadow-navy-950/10 cursor-pointer"
+                        >
+                          <Phone className="w-4 h-4" />
+                          Send via SMS Message
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="pt-2">
+                      <button 
+                        onClick={() => {
+                          setFormName('');
+                          setFormPhone('');
+                          setFormMessage('');
+                          setUploadedImage(null);
+                          if (fileInputRef.current) fileInputRef.current.value = '';
+                          setQuoteState('idle');
+                        }}
+                        className="text-xs font-black text-slate-400 hover:text-orange-500 uppercase tracking-widest transition-colors"
+                      >
+                        ← Request Another Service
+                      </button>
+                    </div>
                   </motion.div>
                 ) : (
                   <form className="space-y-8" onSubmit={handleQuoteSubmit}>
@@ -503,6 +562,82 @@ export default function HomePage() {
                         <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-orange-500 pointer-events-none" />
                       </div>
                     </div>
+
+                    <div className="space-y-3">
+                      <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">
+                        Upload Photo of Appliance / Issue (Optional)
+                      </label>
+                      
+                      <div 
+                        onDragOver={(e) => {
+                          e.preventDefault();
+                          setIsDragging(true);
+                        }}
+                        onDragEnter={(e) => {
+                          e.preventDefault();
+                          setIsDragging(true);
+                        }}
+                        onDragLeave={() => setIsDragging(false)}
+                        onDrop={(e) => {
+                          e.preventDefault();
+                          setIsDragging(false);
+                          if (e.dataTransfer.files?.[0]) {
+                            handleFileChange(e.dataTransfer.files[0]);
+                          }
+                        }}
+                        onClick={() => fileInputRef.current?.click()}
+                        className={`border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 ${
+                          isDragging 
+                            ? 'border-orange-500 bg-orange-50/50' 
+                            : 'border-slate-200 bg-slate-50 hover:bg-slate-100/50 hover:border-slate-300'
+                        }`}
+                      >
+                        <input 
+                          type="file"
+                          ref={fileInputRef}
+                          onChange={(e) => {
+                            if (e.target.files?.[0]) {
+                              handleFileChange(e.target.files[0]);
+                            }
+                          }}
+                          accept="image/*"
+                          className="hidden" 
+                        />
+                        
+                        {uploadedImage ? (
+                          <div className="relative w-full max-w-[200px] aspect-[4/3] rounded-xl overflow-hidden group shadow-md" onClick={(e) => e.stopPropagation()}>
+                            <img 
+                              src={uploadedImage} 
+                              alt="Appliance upload preview" 
+                              className="w-full h-full object-cover" 
+                              referrerPolicy="no-referrer"
+                            />
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setUploadedImage(null);
+                                if (fileInputRef.current) fileInputRef.current.value = '';
+                              }}
+                              className="absolute top-2 right-2 bg-navy-900/80 hover:bg-red-600 text-white p-1.5 rounded-full shadow-lg transition-colors"
+                            >
+                              <X className="w-4 h-4" />
+                            </button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-500">
+                              <UploadCloud className="w-6 h-6 animate-pulse" />
+                            </div>
+                            <div>
+                              <p className="text-sm font-black text-navy-900">Drag & drop your photo here, or <span className="text-orange-500">browse</span></p>
+                              <p className="text-xs text-slate-400 font-medium mt-1">Supports JPG, PNG, WEBP (Max 5MB)</p>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
                     <div className="space-y-3">
                       <label className="text-xs font-black text-navy-900 uppercase tracking-[0.2em] ml-1">Your Message</label>
                       <textarea 

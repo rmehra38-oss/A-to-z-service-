@@ -2,6 +2,9 @@ import { motion } from 'motion/react';
 import { ShieldCheck, Clock, Award, Users, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Import image so Vite can bundle and resolve it correctly
+import heroTechniciansCleanImg from '../assets/images/hero_technicians_clean_1781462453079.jpg';
+
 export default function AboutPage() {
   return (
     <div className="pt-32 pb-20 bg-white">
@@ -36,7 +39,7 @@ export default function AboutPage() {
           >
             <div className="rounded-[4rem] overflow-hidden shadow-3xl border-[16px] border-slate-50 aspect-square">
               <img 
-                src="/images/hero_technicians_clean_1781462453079.jpg" 
+                src={heroTechniciansCleanImg} 
                 alt="Our Team" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

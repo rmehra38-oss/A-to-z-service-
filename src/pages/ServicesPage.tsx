@@ -10,7 +10,7 @@ const acServices = [
     icon: <Wind className="w-8 h-8" />,
     description: "Keep your AC running at peak efficiency with our deep cleaning services.",
     items: [
-      { name: "Window AC Jet Service", price: "₹399 – ₹549", description: "High-pressure water jet cleaning of filters and coils." },
+      { name: "Window AC Jet Service", price: "₹499 – ₹549", description: "High-pressure water jet cleaning of filters and coils." },
       { name: "Split AC Jet Service", price: "₹499 – ₹699", description: "Deep cleaning of indoor and outdoor units to improve airflow." },
       { name: "Foam & Jet Deep Cleaning", price: "₹549 – ₹649", description: "Uses specialized foam to remove stubborn grease and dust from coils." },
       { name: "Anti-Rust Coating Service", price: "₹679 – ₹999", description: "Prevents gas leakage by protecting coils from corrosion." }
@@ -21,9 +21,9 @@ const acServices = [
     icon: <Zap className="w-8 h-8" />,
     description: "Expert leak detection and high-quality refrigerant refilling.",
     items: [
-      { name: "Full Gas Charging (Up to 2 Ton)", price: "₹2,399 – ₹2,800", description: "Includes leak detection, fixing, and a complete refill of refrigerant gas." },
+      { name: "Full Gas Charging (Up to 2 Ton)", price: "₹3,000 – ₹4,500", description: "Includes leak detection, fixing, and a complete refill of refrigerant gas." },
       { name: "Gas Leak Detection Only", price: "₹199 – ₹299", description: "Inspection of joints and coils to find exact leak sources." },
-      { name: "Water Leakage Repair", price: "₹449 – ₹699", description: "Drainage cleaning and pipe adjustment to stop internal dripping." }
+      { name: "Water Leakage Repair", price: "₹600 – ₹900", description: "Drainage cleaning and pipe adjustment to stop internal dripping." }
     ]
   },
   {
@@ -36,7 +36,7 @@ const acServices = [
       { name: "PCB Repair (Non-Inverter)", price: "₹1,500 – ₹2,500", description: "Expert repair of non-inverter control boards." },
       { name: "PCB Repair (Inverter)", price: "₹4,000 – ₹5,800", description: "Specialized repair for inverter AC PCBs." },
       { name: "Condenser Coil Repair", price: "₹500 onwards", description: "Fixing leaks or damage in the condenser coil." },
-      { name: "Fan Motor (Outdoor/Split)", price: "₹1,800 – ₹2,500", description: "Replacement of faulty fan motors." },
+      { name: "Fan Motor (Outdoor/Split)", price: "₹2,600 – ₹3,600", description: "Replacement of faulty fan motors." },
       { name: "Blower Motor Replacement", price: "₹2,200 onwards", description: "Replacement of indoor unit blower motors." },
       { name: "Compressor Replacement (1.5 Ton)", price: "₹7,500 – ₹9,999", description: "Full replacement of the AC compressor." }
     ]
@@ -47,7 +47,7 @@ const acServices = [
     description: "Safe and secure installation or removal of your AC units.",
     items: [
       { name: "Window AC Installation", price: "₹799 – ₹1,039", description: "Secure mounting and setup of window AC." },
-      { name: "Split AC Installation", price: "₹1,439 – ₹2,028", description: "Professional installation of indoor and outdoor units." },
+      { name: "Split AC Installation", price: "₹1,599 – ₹2,199", description: "Professional installation of indoor and outdoor units." },
       { name: "Window AC Uninstallation", price: "₹449 – ₹659", description: "Safe removal of window AC units." },
       { name: "Split AC Uninstallation", price: "₹699 – ₹1,050", description: "Safe removal of split AC units." }
     ]
@@ -269,7 +269,7 @@ export default function ServicesPage() {
                 className="glass-dark text-white px-12 py-6 rounded-3xl font-black text-2xl flex items-center justify-center gap-4 transform hover:-translate-y-2 hover:scale-105 transition-all active:scale-95 border border-white/10"
               >
                 <Phone className="w-8 h-8 text-orange-500" />
-                Call Support
+                Call +91 70563 30400
               </a>
             </div>
             <p className="mt-12 text-slate-500 font-black uppercase tracking-[0.3em] text-xs">Available 8:00 AM - 9:00 PM • All 7 Days</p>

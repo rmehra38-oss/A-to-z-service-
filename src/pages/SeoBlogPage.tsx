@@ -56,7 +56,7 @@ export default function SeoBlogPage() {
           "name": "What are the standard AC service charges in Gurgaon?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Standard AC jet cleaning service charges in Gurgaon start from ₹399 for Window ACs and ₹499 for Split AC units. For specialized foam plus water jet servicing, the prices range from ₹549 to ₹699. This deep cleaning process helps in removing thick dust build-ups, improving cooling performance and dropping electricity consumption by up to 25%."
+            "text": "Standard AC jet cleaning service charges in Gurgaon start from ₹499 for Window ACs and ₹499 for Split AC units. For specialized foam plus water jet servicing, the prices range from ₹549 to ₹699. This deep cleaning process helps in removing thick dust build-ups, improving cooling performance and dropping electricity consumption by up to 25%."
           }
         },
         {
@@ -64,7 +64,7 @@ export default function SeoBlogPage() {
           "name": "How much does AC gas filling cost in Gurgaon?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AC gas filling charges in Gurgaon typically range from ₹1,500 to ₹2,800 depending on the tonnage (1 Ton, 1.5 Ton, or 2 Ton) and the type of refrigerant gas (R22, R32, or R410A). A complete gas charging package at ASAP Gurgaon AC Service includes high-pressure leak detection, repair, vacuuming, and a full gas refill with a 90-day warranty protection."
+            "text": "AC gas filling charges in Gurgaon typically range from ₹3,000 to ₹4,500 depending on the tonnage (1 Ton, 1.5 Ton, or 2 Ton) and the type of refrigerant gas (R22, R32, or R410A). A complete gas charging package at ASAP Gurgaon AC Service includes high-pressure leak detection, repair, vacuuming, and a full gas refill with a 90-day warranty protection."
           }
         },
         {
@@ -342,7 +342,7 @@ export default function SeoBlogPage() {
                         <td className="p-5 font-bold text-navy-950">Window AC Jet Service</td>
                         <td className="p-5">35 Minutes</td>
                         <td className="p-5">₹499 — ₹600</td>
-                        <td className="p-5 text-orange-600 font-black">₹399 onwards</td>
+                        <td className="p-5 text-orange-600 font-black">₹499 onwards</td>
                       </tr>
                       <tr>
                         <td className="p-5 font-bold text-navy-950">Split AC High-Pressure Cleaning</td>
@@ -359,8 +359,8 @@ export default function SeoBlogPage() {
                       <tr>
                         <td className="p-5 font-bold text-navy-950">Full Gas Charging (1.5 Ton)</td>
                         <td className="p-5">60 Minutes</td>
-                        <td className="p-5">₹2,800 — ₹3,500</td>
-                        <td className="p-5 text-orange-600 font-black">₹2,399 guaranteed</td>
+                        <td className="p-5">₹3,500 — ₹5,000</td>
+                        <td className="p-5 text-orange-600 font-black">₹3,000 – ₹4,500</td>
                       </tr>
                       <tr>
                         <td className="p-5 font-bold text-navy-950">PCB Debugging & Microcontroller Fix</td>
@@ -372,7 +372,7 @@ export default function SeoBlogPage() {
                         <td className="p-5 font-bold text-navy-950">Water Drip Correction & Drain Pipe Flush</td>
                         <td className="p-5">30 Minutes</td>
                         <td className="p-5">₹600 — ₹800</td>
-                        <td className="p-5 text-orange-600 font-black">₹449 absolute price</td>
+                        <td className="p-5 text-orange-600 font-black">₹600 – ₹900</td>
                       </tr>
                     </tbody>
                   </table>

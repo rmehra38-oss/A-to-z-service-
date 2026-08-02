@@ -169,7 +169,7 @@ export default function HomePage() {
                 Don't let a broken appliance ruin your day. We provide fast, reliable, and affordable repair services for all your home appliances in Gurgaon.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-5 md:hidden">
+              <div className="flex flex-col sm:flex-row gap-5">
                 <a 
                   href={whatsappLink}
                   target="_blank"
@@ -184,7 +184,7 @@ export default function HomePage() {
                   className="glass border-2 border-slate-200 hover:border-navy-900 text-navy-900 px-10 py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-3 shadow-sm transform hover:-translate-y-1"
                 >
                   <Phone className="w-5 h-5 text-orange-500" />
-                  Call Support
+                  Call +91 70563 30400
                 </a>
               </div>
             </motion.div>
@@ -272,7 +272,7 @@ export default function HomePage() {
                 Beat the Heat!
               </h2>
               <p className="text-xl md:text-3xl font-black text-white uppercase tracking-widest">
-                AC SERVICE Starting at <span className="bg-navy-900 px-4 py-1 rounded-xl shadow-lg">₹399</span>
+                AC SERVICE Starting at <span className="bg-navy-900 px-4 py-1 rounded-xl shadow-lg">₹499</span>
               </p>
               <p className="text-navy-900/70 font-bold mt-2 uppercase tracking-[0.2em] text-sm">Limited Time Only • Same Day Service</p>
             </div>

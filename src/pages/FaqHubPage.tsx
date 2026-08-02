@@ -112,7 +112,7 @@ const faqData: FAQItem[] = [
     id: 16,
     category: "charges",
     question: "What lists as standard pricing for complete AC gas refilling in Gurgaon?",
-    answer: "Standard AC gas refilling ranges from ₹2,200 to ₹2,800 depending on tonnage and chemical class (R22, R32, or R410A). Beware of vendors offering cheap 'gas top-ups' without performing proper high-pressure Nitrogen tests to find the leak. Fixing leaks first is essential to ensure you don't face identical dripping or warming issues weeks later."
+    answer: "Standard AC gas refilling ranges from ₹3,000 to ₹4,500 depending on tonnage and chemical class (R22, R32, or R410A). Beware of vendors offering cheap 'gas top-ups' without performing proper high-pressure Nitrogen tests to find the leak. Fixing leaks first is essential to ensure you don't face identical dripping or warming issues weeks later."
   },
   {
     id: 17,

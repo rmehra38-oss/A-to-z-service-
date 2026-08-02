@@ -59,7 +59,7 @@ function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden md:flex items-center md:space-x-4 lg:space-x-8">
             {navLinks.map((link) => (
               <Link 
                 key={link.path}
@@ -79,7 +79,7 @@ function Navbar() {
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="lg:hidden p-3 text-navy-900 glass shadow-lg rounded-2xl transition-all active:scale-90"
+            className="md:hidden p-3 text-navy-900 glass shadow-lg rounded-2xl transition-all active:scale-90"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

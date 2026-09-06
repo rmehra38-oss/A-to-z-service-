@@ -260,25 +260,25 @@ export default function ServicesPage() {
                 title: "Refrigerator Repair",
                 desc: "Single & double door cooling fixes, compressor, and gas refill.",
                 price: "From ₹249",
-                link: "/fridge-repair"
+                link: "/fridge-repair-gurgaon"
               },
               {
                 title: "Washing Machine",
                 desc: "Front & top load drum balancing, PCB repair, and motor faults.",
                 price: "From ₹299",
-                link: "/washing-machine-repair"
+                link: "/washing-machine-repair-gurgaon"
               },
               {
                 title: "Microwave Oven",
                 desc: "Magnetron heating, touchpad membrane, sparks, and fuse repairs.",
                 price: "From ₹249",
-                link: "/microwave-repair"
+                link: "/microwave-repair-gurgaon"
               },
               {
                 title: "Geyser & Water Heater",
                 desc: "Heavy-duty coil, thermostat replacement, descaling & leak repair.",
                 price: "From ₹249",
-                link: "/geyser-repair"
+                link: "/geyser-repair-gurgaon"
               }
             ].map((app, i) => (
               <Link 

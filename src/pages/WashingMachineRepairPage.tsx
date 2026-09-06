@@ -4,7 +4,7 @@ import {
   Wrench, Zap, ThumbsUp, HeartHandshake, ChevronDown, ArrowRight, 
   RotateCw, AlertTriangle, Check, Droplets
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import serviceWashingImg from '../assets/images/service_washing_machine_repair_1781461892008.jpg';
 
@@ -111,6 +111,57 @@ const faqs = [
 export default function WashingMachineRepairPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const whatsappLink = "https://wa.me/917056330400?text=Hi%2C%20I%20need%20doorstep%20Washing%20Machine%20repair%20service%20in%20Gurgaon";
+
+  useEffect(() => {
+    document.title = "Washing Machine Repair Gurgaon | Front & Top Load Service (₹299)";
+    
+    // Canonical link tag
+    let canonical = document.querySelector("link[rel='canonical']") as HTMLLinkElement;
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = "https://www.gurgaonacservice.com/washing-machine-repair-gurgaon";
+
+    // Service Schema
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'washing-service-schema';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Washing Machine Repair Service",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "ASAP Gurgaon AC & Appliance Service",
+        "telephone": "+917056330400",
+        "url": "https://www.gurgaonacservice.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shop 6, Sector 52 Market",
+          "addressLocality": "Gurgaon",
+          "addressRegion": "Haryana",
+          "postalCode": "122003",
+          "addressCountry": "IN"
+        }
+      },
+      "areaServed": "Gurgaon",
+      "url": "https://www.gurgaonacservice.com/washing-machine-repair-gurgaon",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "INR",
+        "price": "299",
+        "availability": "https://schema.org/InStock"
+      }
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      const el = document.getElementById('washing-service-schema');
+      if (el) el.remove();
+    };
+  }, []);
 
   return (
     <div className="bg-slate-50 min-h-screen relative overflow-hidden">
@@ -432,15 +483,15 @@ export default function WashingMachineRepairPage() {
             <h3 className="text-2xl font-black text-navy-950">Looking for Other Appliance Repairs in Gurgaon?</h3>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link to="/fridge-repair" className="p-6 bg-white rounded-2xl border border-slate-200 text-center hover:border-orange-500 hover:shadow-md transition-all group">
+            <Link to="/fridge-repair-gurgaon" className="p-6 bg-white rounded-2xl border border-slate-200 text-center hover:border-orange-500 hover:shadow-md transition-all group">
               <span className="block font-black text-navy-950 group-hover:text-orange-600 mb-1">Refrigerator Repair</span>
               <span className="text-xs text-slate-500">From ₹249 • Single & Double Door</span>
             </Link>
-            <Link to="/microwave-repair" className="p-6 bg-white rounded-2xl border border-slate-200 text-center hover:border-orange-500 hover:shadow-md transition-all group">
+            <Link to="/microwave-repair-gurgaon" className="p-6 bg-white rounded-2xl border border-slate-200 text-center hover:border-orange-500 hover:shadow-md transition-all group">
               <span className="block font-black text-navy-950 group-hover:text-orange-600 mb-1">Microwave Repair</span>
               <span className="text-xs text-slate-500">From ₹249 • Magnetron & Touchpad</span>
             </Link>
-            <Link to="/geyser-repair" className="p-6 bg-white rounded-2xl border border-slate-200 text-center hover:border-orange-500 hover:shadow-md transition-all group">
+            <Link to="/geyser-repair-gurgaon" className="p-6 bg-white rounded-2xl border border-slate-200 text-center hover:border-orange-500 hover:shadow-md transition-all group">
               <span className="block font-black text-navy-950 group-hover:text-orange-600 mb-1">Geyser Repair</span>
               <span className="text-xs text-slate-500">From ₹249 • Heating Element & Tank</span>
             </Link>

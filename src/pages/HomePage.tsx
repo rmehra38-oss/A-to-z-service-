@@ -20,7 +20,7 @@ const services = [
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-fridge',
     image: serviceRefrigeratorRepairImg,
-    link: '/fridge-repair',
+    link: '/fridge-repair-gurgaon',
     tag: 'From ₹249'
   },
   {
@@ -29,7 +29,7 @@ const services = [
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-washing',
     image: serviceWashingMachineRepairImg,
-    link: '/washing-machine-repair',
+    link: '/washing-machine-repair-gurgaon',
     tag: 'From ₹299'
   },
   {
@@ -38,7 +38,7 @@ const services = [
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-microwave',
     image: serviceMicrowaveRepairImg,
-    link: '/microwave-repair',
+    link: '/microwave-repair-gurgaon',
     tag: 'From ₹249'
   },
   {
@@ -47,7 +47,7 @@ const services = [
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-geyser',
     image: serviceGeyserRepairImg,
-    link: '/geyser-repair',
+    link: '/geyser-repair-gurgaon',
     tag: 'From ₹249'
   },
   {

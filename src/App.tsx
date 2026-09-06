@@ -21,6 +21,8 @@ const SeoBlogPage = lazy(() => import('./pages/SeoBlogPage'));
 const LocationPage = lazy(() => import('./pages/LocationPage'));
 const FaqHubPage = lazy(() => import('./pages/FaqHubPage'));
 
+import ApplianceQuickLinks from './components/ApplianceQuickLinks';
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -42,10 +44,10 @@ function Navbar() {
   }, []);
 
   const applianceLinks = [
-    { name: 'Refrigerator Repair', path: '/fridge-repair', tag: 'From ₹249' },
-    { name: 'Washing Machine Repair', path: '/washing-machine-repair', tag: 'From ₹249' },
-    { name: 'Microwave Repair', path: '/microwave-repair', tag: 'From ₹249' },
-    { name: 'Geyser Repair', path: '/geyser-repair', tag: 'From ₹249' },
+    { name: 'Fridge Repair Gurgaon', path: '/fridge-repair-gurgaon', tag: 'From ₹249' },
+    { name: 'Washing Machine Gurgaon', path: '/washing-machine-repair-gurgaon', tag: 'From ₹299' },
+    { name: 'Microwave Repair Gurgaon', path: '/microwave-repair-gurgaon', tag: 'From ₹249' },
+    { name: 'Geyser Repair Gurgaon', path: '/geyser-repair-gurgaon', tag: 'From ₹249' },
   ];
 
   const navLinks = [
@@ -96,7 +98,7 @@ function Navbar() {
             >
               <button 
                 className={`font-bold transition-colors relative group px-2 py-1 flex items-center gap-1.5 ${
-                  ['/fridge-repair', '/washing-machine-repair', '/microwave-repair', '/geyser-repair'].includes(location.pathname)
+                  ['fridge', 'washing-machine', 'microwave', 'geyser'].some(slug => location.pathname.includes(slug))
                     ? 'text-orange-500' 
                     : 'text-navy-800 hover:text-orange-500'
                 }`}
@@ -293,10 +295,10 @@ function Footer() {
             <h4 className="text-navy-900 font-black uppercase tracking-[0.3em] text-[10px] mb-6">Appliance Repairs</h4>
             <ul className="space-y-3">
               {[
-                { name: 'Refrigerator Repair', path: '/fridge-repair' },
-                { name: 'Washing Machine Repair', path: '/washing-machine-repair' },
-                { name: 'Microwave Oven Repair', path: '/microwave-repair' },
-                { name: 'Geyser & Water Heater', path: '/geyser-repair' },
+                { name: 'Fridge Repair Gurgaon', path: '/fridge-repair-gurgaon' },
+                { name: 'Washing Machine Gurgaon', path: '/washing-machine-repair-gurgaon' },
+                { name: 'Microwave Repair Gurgaon', path: '/microwave-repair-gurgaon' },
+                { name: 'Geyser Repair Gurgaon', path: '/geyser-repair-gurgaon' },
                 { name: 'AC Service & Jet Cleaning', path: '/services' }
               ].map(link => (
                 <li key={link.path}>
@@ -414,14 +416,26 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/services" element={<ServicesPage />} />
+              
+              {/* Gurgaon Appliance Repair Routes */}
+              <Route path="/fridge-repair-gurgaon" element={<FridgeRepairPage />} />
               <Route path="/fridge-repair" element={<FridgeRepairPage />} />
               <Route path="/services/fridge-repair" element={<FridgeRepairPage />} />
+              
+              <Route path="/washing-machine-repair-gurgaon" element={<WashingMachineRepairPage />} />
+              <Route path="/washing-machine-gurgaon" element={<WashingMachineRepairPage />} />
               <Route path="/washing-machine-repair" element={<WashingMachineRepairPage />} />
               <Route path="/services/washing-machine-repair" element={<WashingMachineRepairPage />} />
+              
+              <Route path="/microwave-repair-gurgaon" element={<MicrowaveRepairPage />} />
+              <Route path="/microwave-reapir-gurgaon" element={<MicrowaveRepairPage />} />
               <Route path="/microwave-repair" element={<MicrowaveRepairPage />} />
               <Route path="/services/microwave-repair" element={<MicrowaveRepairPage />} />
+              
+              <Route path="/geyser-repair-gurgaon" element={<GeyserRepairPage />} />
               <Route path="/geyser-repair" element={<GeyserRepairPage />} />
               <Route path="/services/geyser-repair" element={<GeyserRepairPage />} />
+              
               <Route path="/about" element={<AboutPage />} />
               <Route path="/why-us" element={<WhyUsPage />} />
               <Route path="/portfolio" element={<PortfolioPage />} />
@@ -434,6 +448,7 @@ export default function App() {
           </Suspense>
         </main>
 
+        <ApplianceQuickLinks />
         <Footer />
         <MobileCTA />
       </div>

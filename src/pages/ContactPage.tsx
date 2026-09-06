@@ -98,6 +98,12 @@ export default function ContactPage() {
                 <button className="w-full orange-gradient text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-orange-500/20 transform hover:-translate-y-1 transition-all">
                   Send Message
                 </button>
+                <p className="text-[11px] text-slate-400 font-medium text-center">
+                  🔒 We respect your privacy. Details shared are used solely for service dispatch under our{" "}
+                  <Link to="/privacy-policy" className="text-orange-600 font-bold hover:underline">
+                    Privacy Policy
+                  </Link>.
+                </p>
               </form>
             </div>
             <div className="bg-navy-900 p-12 md:p-20 text-white flex flex-col justify-center relative overflow-hidden">

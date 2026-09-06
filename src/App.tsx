@@ -280,6 +280,13 @@ function Header() {
               >
                 Contact
               </Link>
+              <Link 
+                to="/privacy-policy"
+                onClick={() => setIsMenuOpen(false)}
+                className={`block w-full text-left px-4 py-2.5 font-bold rounded-xl text-base ${location.pathname.includes('privacy') ? 'bg-orange-500 text-white' : 'text-slate-800 hover:bg-orange-50'}`}
+              >
+                Privacy Policy
+              </Link>
               <a href="tel:+917056330400" className="block w-full bg-orange-500 text-white text-center px-4 py-3 rounded-xl font-black shadow-md shadow-orange-500/20 text-base">
                 Call Now: +91 70563 30400
               </a>
@@ -372,7 +379,13 @@ function Footer() {
         
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-400 font-black uppercase tracking-widest text-[10px]">Doorstep service across DLF, Sohna Rd, Golf Course Rd, Sector 56 & all Gurgaon.</p>
-          <p className="text-slate-500 font-black text-xs">© 2026 ASAP GURGAON AC & APPLIANCE SERVICE. All rights reserved.</p>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-slate-500 font-bold text-xs">
+            <Link to="/privacy-policy" className="hover:text-orange-500 underline underline-offset-4 transition-colors">Privacy Policy</Link>
+            <span>•</span>
+            <Link to="/contact" className="hover:text-orange-500 underline underline-offset-4 transition-colors">Contact Support</Link>
+            <span>•</span>
+            <p>© 2026 ASAP GURGAON AC & APPLIANCE SERVICE. All rights reserved.</p>
+          </div>
         </div>
       </div>
     </footer>
@@ -446,6 +459,8 @@ export default function App() {
               <Route path="/portfolio" element={<PortfolioPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/privacy" element={<PrivacyPolicyPage />} />
+              <Route path="/legal/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/blog/ac-repair-gurgaon" element={<SeoBlogPage />} />
               <Route path="/location/dlf-gurgaon" element={<LocationPage />} />
               <Route path="/faqs" element={<FaqHubPage />} />

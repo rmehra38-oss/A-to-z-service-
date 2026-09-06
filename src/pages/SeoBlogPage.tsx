@@ -90,7 +90,7 @@ export default function SeoBlogPage() {
   }, []);
 
   return (
-    <div className="bg-slate-50 min-h-screen pt-32 pb-24 relative overflow-hidden">
+    <div className="bg-slate-50 min-h-screen pt-36 md:pt-44 pb-24 relative overflow-hidden">
       {/* Background Ornaments */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-10 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>

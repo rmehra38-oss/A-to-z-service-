@@ -3,7 +3,7 @@ import { Shield, Lock, Eye, CheckCircle2, RefreshCw } from 'lucide-react';
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="pt-32 pb-20 bg-slate-50 min-h-screen">
+    <div className="pt-36 md:pt-44 pb-20 bg-slate-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-[3rem] p-8 md:p-16 lg:p-20 shadow-xl border border-slate-100 relative overflow-hidden">
           {/* Decorative background accent */}

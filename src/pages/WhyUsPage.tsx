@@ -31,7 +31,7 @@ export default function WhyUsPage() {
   const whatsappLink = "https://wa.me/917056330400?text=I'm%20interested%20in%20your%20services";
 
   return (
-    <div className="pt-32 pb-20 bg-slate-50">
+    <div className="pt-36 md:pt-44 pb-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-24">
           <motion.h2 

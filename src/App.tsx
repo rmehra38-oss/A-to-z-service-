@@ -31,7 +31,7 @@ function ScrollToTop() {
   return null;
 }
 
-function Navbar() {
+function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAppliancesOpen, setIsAppliancesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -50,219 +50,244 @@ function Navbar() {
     { name: 'Geyser Repair Gurgaon', path: '/geyser-repair-gurgaon', tag: 'From ₹249' },
   ];
 
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'AC Services', path: '/services' },
-    { name: 'Localities', path: '/location/dlf-gurgaon' },
-    { name: 'FAQs', path: '/faqs' },
-    { name: 'Why Us', path: '/why-us' },
-    { name: 'Contact', path: '/contact' },
-  ];
-
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'glass shadow-lg py-3 top-0' : 'bg-transparent py-6 top-0 md:top-12'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-3 cursor-pointer group">
-            <div className="bg-orange-500 p-2 rounded-2xl group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-orange-500/20 w-12 h-12 flex items-center justify-center">
-              <Wind className="w-7 h-7 text-white" />
-            </div>
-            <span className="text-xl md:text-2xl font-black tracking-tighter">
-              <span className="text-navy-900">ASAP GURGAON</span> <span className="text-orange-500">AC SERVICE</span>
-            </span>
-          </Link>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center md:space-x-3 lg:space-x-6">
-            <Link 
-              to="/"
-              className={`font-bold transition-colors relative group px-2 py-1 ${location.pathname === '/' ? 'text-orange-500' : 'text-navy-800 hover:text-orange-500'}`}
-            >
-              Home
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all ${location.pathname === '/' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </Link>
-
-            <Link 
-              to="/services"
-              className={`font-bold transition-colors relative group px-2 py-1 ${location.pathname === '/services' ? 'text-orange-500' : 'text-navy-800 hover:text-orange-500'}`}
-            >
-              AC Services
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all ${location.pathname === '/services' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </Link>
-
-            {/* Appliance Repairs Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setIsAppliancesOpen(true)}
-              onMouseLeave={() => setIsAppliancesOpen(false)}
-            >
-              <button 
-                className={`font-bold transition-colors relative group px-2 py-1 flex items-center gap-1.5 ${
-                  ['fridge', 'washing-machine', 'microwave', 'geyser'].some(slug => location.pathname.includes(slug))
-                    ? 'text-orange-500' 
-                    : 'text-navy-800 hover:text-orange-500'
-                }`}
-              >
-                <span>Appliances</span>
-                <span className="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full font-black uppercase text-[10px]">New</span>
-              </button>
-
-              <AnimatePresence>
-                {isAppliancesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 mt-2 w-72 bg-white rounded-3xl shadow-2xl border border-slate-100 p-3 z-50"
-                  >
-                    <div className="text-[10px] uppercase font-black tracking-widest text-slate-400 px-3 py-2 border-b border-slate-100 mb-1">
-                      Doorstep Repair in Gurgaon
-                    </div>
-                    {applianceLinks.map((item) => (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        onClick={() => setIsAppliancesOpen(false)}
-                        className={`flex items-center justify-between px-3 py-3 rounded-2xl transition-all font-black text-sm ${
-                          location.pathname === item.path 
-                            ? 'bg-orange-50 text-orange-600' 
-                            : 'text-navy-900 hover:bg-slate-50 hover:text-orange-500'
-                        }`}
-                      >
-                        <span>{item.name}</span>
-                        <span className="text-[10px] text-slate-400 font-bold bg-slate-100 px-2 py-0.5 rounded-lg">{item.tag}</span>
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <Link 
-              to="/location/dlf-gurgaon"
-              className={`font-bold transition-colors relative group px-2 py-1 ${location.pathname.startsWith('/location') ? 'text-orange-500' : 'text-navy-800 hover:text-orange-500'}`}
-            >
-              Localities
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all ${location.pathname.startsWith('/location') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </Link>
-
-            <Link 
-              to="/faqs"
-              className={`font-bold transition-colors relative group px-2 py-1 ${location.pathname === '/faqs' ? 'text-orange-500' : 'text-navy-800 hover:text-orange-500'}`}
-            >
-              FAQs
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all ${location.pathname === '/faqs' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </Link>
-
-            <Link 
-              to="/why-us"
-              className={`font-bold transition-colors relative group px-2 py-1 ${location.pathname === '/why-us' ? 'text-orange-500' : 'text-navy-800 hover:text-orange-500'}`}
-            >
-              Why Us
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all ${location.pathname === '/why-us' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </Link>
-
-            <Link 
-              to="/contact"
-              className={`font-bold transition-colors relative group px-2 py-1 ${location.pathname === '/contact' ? 'text-orange-500' : 'text-navy-800 hover:text-orange-500'}`}
-            >
-              Contact
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all ${location.pathname === '/contact' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </Link>
-
-            <a href="tel:+917056330400" className="orange-gradient text-white px-6 py-3 rounded-2xl font-bold transition-all shadow-xl shadow-orange-500/30 flex items-center gap-2 transform hover:-translate-y-1 text-sm">
-              <Phone className="w-4 h-4" />
-              +91 70563 30400
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="md:hidden p-3 text-navy-900 glass shadow-lg rounded-2xl transition-all active:scale-90"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+    <header className="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300">
+      {/* Top Banner - crisp high-contrast announcement bar */}
+      <div className="bg-orange-500 text-white py-2 px-4 text-center relative z-[60] overflow-hidden shadow-sm hidden md:block border-b border-orange-600/20">
+        <div className="flex items-center justify-center gap-3 max-w-7xl mx-auto text-xs font-black uppercase tracking-wider">
+          <Wind className="w-3.5 h-3.5 text-navy-950 fill-navy-950 shrink-0" />
+          <span>
+            PREMIUM AC & APPLIANCE SERVICE – <span className="text-navy-950 underline decoration-navy-950/40">LIMITED TIME OFFERS</span> AVAILABLE IN GURGAON
+          </span>
+          <Wind className="w-3.5 h-3.5 text-navy-950 fill-navy-950 shrink-0" />
         </div>
       </div>
 
-      {/* Mobile Nav Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden glass border-t border-slate-100 px-6 py-8 space-y-3 shadow-2xl overflow-hidden rounded-b-[3rem] max-h-[85vh] overflow-y-auto"
-          >
-            <Link 
-              to="/"
-              onClick={() => setIsMenuOpen(false)}
-              className={`block w-full text-left px-5 py-3 font-black rounded-2xl transition-all text-base ${location.pathname === '/' ? 'bg-orange-500 text-white' : 'text-navy-800 hover:bg-orange-50'}`}
-            >
-              Home
-            </Link>
-            <Link 
-              to="/services"
-              onClick={() => setIsMenuOpen(false)}
-              className={`block w-full text-left px-5 py-3 font-black rounded-2xl transition-all text-base ${location.pathname === '/services' ? 'bg-orange-500 text-white' : 'text-navy-800 hover:bg-orange-50'}`}
-            >
-              AC Services
+      {/* Main Navbar - Solid White Background with WCAG AA High Contrast on EVERY page */}
+      <nav className={`w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300 ${scrolled ? 'py-2 shadow-md' : 'py-3'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center gap-2">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group shrink-0">
+              <div className="bg-orange-500 p-2 rounded-2xl group-hover:rotate-12 transition-transform duration-300 shadow-md shadow-orange-500/20 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+                <Wind className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 leading-none">
+                <span className="text-base sm:text-lg md:text-xl font-black text-navy-950 tracking-tight whitespace-nowrap">
+                  ASAP GURGAON
+                </span>
+                <span className="text-[11px] sm:text-xs md:text-sm font-black text-orange-600 tracking-wider uppercase whitespace-nowrap">
+                  AC SERVICE
+                </span>
+              </div>
             </Link>
 
-            {/* Mobile Appliance Links */}
-            <div className="bg-slate-100/70 p-3 rounded-2xl space-y-1.5">
-              <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 px-3 py-1">
-                Appliance Repair Services
-              </div>
-              {applianceLinks.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block w-full text-left px-4 py-2.5 font-bold rounded-xl text-sm ${location.pathname === item.path ? 'bg-orange-500 text-white' : 'text-navy-900 hover:bg-white'}`}
+            {/* Desktop Navigation Links */}
+            <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+              <Link 
+                to="/"
+                className={`px-3 py-1.5 rounded-xl font-bold text-sm transition-colors ${
+                  location.pathname === '/' ? 'text-orange-600 bg-orange-50 font-black' : 'text-slate-800 hover:text-orange-600 hover:bg-slate-50'
+                }`}
+              >
+                Home
+              </Link>
+
+              <Link 
+                to="/services"
+                className={`px-3 py-1.5 rounded-xl font-bold text-sm transition-colors ${
+                  location.pathname === '/services' ? 'text-orange-600 bg-orange-50 font-black' : 'text-slate-800 hover:text-orange-600 hover:bg-slate-50'
+                }`}
+              >
+                AC Services
+              </Link>
+
+              {/* Appliance Repairs Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsAppliancesOpen(true)}
+                onMouseLeave={() => setIsAppliancesOpen(false)}
+              >
+                <button 
+                  className={`px-3 py-1.5 rounded-xl font-bold text-sm transition-colors flex items-center gap-1.5 ${
+                    ['fridge', 'washing-machine', 'microwave', 'geyser'].some(slug => location.pathname.includes(slug))
+                      ? 'text-orange-600 bg-orange-50 font-black' 
+                      : 'text-slate-800 hover:text-orange-600 hover:bg-slate-50'
+                  }`}
                 >
-                  {item.name}
-                </Link>
-              ))}
+                  <span>Appliances</span>
+                  <span className="bg-orange-500 text-white px-1.5 py-0.5 rounded-full font-black uppercase text-[9px] tracking-wider">New</span>
+                </button>
+
+                <AnimatePresence>
+                  {isAppliancesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full left-0 mt-1 w-72 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2.5 z-50"
+                    >
+                      <div className="text-[10px] uppercase font-black tracking-widest text-slate-400 px-3 py-1.5 border-b border-slate-100 mb-1">
+                        Doorstep Repair in Gurgaon
+                      </div>
+                      {applianceLinks.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={() => setIsAppliancesOpen(false)}
+                          className={`flex items-center justify-between px-3 py-2.5 rounded-xl transition-all font-bold text-sm ${
+                            location.pathname === item.path 
+                              ? 'bg-orange-50 text-orange-600 font-black' 
+                              : 'text-slate-800 hover:bg-slate-50 hover:text-orange-600'
+                          }`}
+                        >
+                          <span>{item.name}</span>
+                          <span className="text-[10px] text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-md">{item.tag}</span>
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <Link 
+                to="/location/dlf-gurgaon"
+                className={`px-3 py-1.5 rounded-xl font-bold text-sm transition-colors ${
+                  location.pathname.startsWith('/location') ? 'text-orange-600 bg-orange-50 font-black' : 'text-slate-800 hover:text-orange-600 hover:bg-slate-50'
+                }`}
+              >
+                Localities
+              </Link>
+
+              <Link 
+                to="/faqs"
+                className={`px-3 py-1.5 rounded-xl font-bold text-sm transition-colors ${
+                  location.pathname === '/faqs' ? 'text-orange-600 bg-orange-50 font-black' : 'text-slate-800 hover:text-orange-600 hover:bg-slate-50'
+                }`}
+              >
+                FAQs
+              </Link>
+
+              <Link 
+                to="/why-us"
+                className={`px-3 py-1.5 rounded-xl font-bold text-sm transition-colors ${
+                  location.pathname === '/why-us' ? 'text-orange-600 bg-orange-50 font-black' : 'text-slate-800 hover:text-orange-600 hover:bg-slate-50'
+                }`}
+              >
+                Why Us
+              </Link>
+
+              <Link 
+                to="/contact"
+                className={`px-3 py-1.5 rounded-xl font-bold text-sm transition-colors ${
+                  location.pathname === '/contact' ? 'text-orange-600 bg-orange-50 font-black' : 'text-slate-800 hover:text-orange-600 hover:bg-slate-50'
+                }`}
+              >
+                Contact
+              </Link>
             </div>
 
-            <Link 
-              to="/location/dlf-gurgaon"
-              onClick={() => setIsMenuOpen(false)}
-              className={`block w-full text-left px-5 py-3 font-black rounded-2xl transition-all text-base ${location.pathname.startsWith('/location') ? 'bg-orange-500 text-white' : 'text-navy-800 hover:bg-orange-50'}`}
+            {/* Right Call Action */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <a 
+                href="tel:+917056330400" 
+                className="bg-orange-500 hover:bg-orange-600 text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-black text-xs sm:text-sm tracking-tight transition-all shadow-md shadow-orange-500/25 flex items-center gap-2 shrink-0 whitespace-nowrap hover:-translate-y-0.5"
+              >
+                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">+91 70563 30400</span>
+                <span className="sm:hidden">Call Now</span>
+              </a>
+
+              {/* Mobile Menu Button */}
+              <button 
+                onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                className="lg:hidden p-2 text-navy-950 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all active:scale-95"
+                aria-label="Toggle Menu"
+              >
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Drawer */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden bg-white border-t border-slate-100 px-4 py-5 space-y-2 shadow-2xl overflow-hidden rounded-b-3xl max-h-[80vh] overflow-y-auto"
             >
-              Localities
-            </Link>
-            <Link 
-              to="/faqs"
-              onClick={() => setIsMenuOpen(false)}
-              className={`block w-full text-left px-5 py-3 font-black rounded-2xl transition-all text-base ${location.pathname === '/faqs' ? 'bg-orange-500 text-white' : 'text-navy-800 hover:bg-orange-50'}`}
-            >
-              FAQs
-            </Link>
-            <Link 
-              to="/why-us"
-              onClick={() => setIsMenuOpen(false)}
-              className={`block w-full text-left px-5 py-3 font-black rounded-2xl transition-all text-base ${location.pathname === '/why-us' ? 'bg-orange-500 text-white' : 'text-navy-800 hover:bg-orange-50'}`}
-            >
-              Why Us
-            </Link>
-            <Link 
-              to="/contact"
-              onClick={() => setIsMenuOpen(false)}
-              className={`block w-full text-left px-5 py-3 font-black rounded-2xl transition-all text-base ${location.pathname === '/contact' ? 'bg-orange-500 text-white' : 'text-navy-800 hover:bg-orange-50'}`}
-            >
-              Contact
-            </Link>
-            <a href="tel:+917056330400" className="block w-full orange-gradient text-white text-center px-6 py-4 rounded-2xl font-black shadow-xl shadow-orange-500/20 text-base">
-              Call Now: +91 70563 30400
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+              <Link 
+                to="/"
+                onClick={() => setIsMenuOpen(false)}
+                className={`block w-full text-left px-4 py-2.5 font-bold rounded-xl text-base ${location.pathname === '/' ? 'bg-orange-500 text-white' : 'text-slate-800 hover:bg-orange-50'}`}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/services"
+                onClick={() => setIsMenuOpen(false)}
+                className={`block w-full text-left px-4 py-2.5 font-bold rounded-xl text-base ${location.pathname === '/services' ? 'bg-orange-500 text-white' : 'text-slate-800 hover:bg-orange-50'}`}
+              >
+                AC Services
+              </Link>
+
+              {/* Mobile Appliance Sub-menu */}
+              <div className="bg-slate-50 p-3 rounded-2xl space-y-1.5 border border-slate-100">
+                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 px-2 py-1">
+                  Appliance Repair Services
+                </div>
+                {applianceLinks.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block w-full text-left px-3 py-2 font-bold rounded-lg text-sm ${location.pathname === item.path ? 'bg-orange-500 text-white' : 'text-slate-800 hover:bg-white'}`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+
+              <Link 
+                to="/location/dlf-gurgaon"
+                onClick={() => setIsMenuOpen(false)}
+                className={`block w-full text-left px-4 py-2.5 font-bold rounded-xl text-base ${location.pathname.startsWith('/location') ? 'bg-orange-500 text-white' : 'text-slate-800 hover:bg-orange-50'}`}
+              >
+                Localities
+              </Link>
+              <Link 
+                to="/faqs"
+                onClick={() => setIsMenuOpen(false)}
+                className={`block w-full text-left px-4 py-2.5 font-bold rounded-xl text-base ${location.pathname === '/faqs' ? 'bg-orange-500 text-white' : 'text-slate-800 hover:bg-orange-50'}`}
+              >
+                FAQs
+              </Link>
+              <Link 
+                to="/why-us"
+                onClick={() => setIsMenuOpen(false)}
+                className={`block w-full text-left px-4 py-2.5 font-bold rounded-xl text-base ${location.pathname === '/why-us' ? 'bg-orange-500 text-white' : 'text-slate-800 hover:bg-orange-50'}`}
+              >
+                Why Us
+              </Link>
+              <Link 
+                to="/contact"
+                onClick={() => setIsMenuOpen(false)}
+                className={`block w-full text-left px-4 py-2.5 font-bold rounded-xl text-base ${location.pathname === '/contact' ? 'bg-orange-500 text-white' : 'text-slate-800 hover:bg-orange-50'}`}
+              >
+                Contact
+              </Link>
+              <a href="tel:+917056330400" className="block w-full bg-orange-500 text-white text-center px-4 py-3 rounded-xl font-black shadow-md shadow-orange-500/20 text-base">
+                Call Now: +91 70563 30400
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </header>
   );
 }
 
@@ -354,25 +379,6 @@ function Footer() {
   );
 }
 
-function TopBanner() {
-  return (
-    <div className="bg-orange-500 text-white py-3 px-4 text-center relative z-[60] overflow-hidden shadow-2xl hidden md:block">
-      <motion.div 
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, type: "spring" }}
-        className="flex items-center justify-center gap-4"
-      >
-        <Wind className="w-4 h-4 text-navy-900 fill-navy-900" />
-        <p className="text-sm font-black uppercase tracking-[0.15em] drop-shadow-md">
-          Premium AC Service – <span className="text-navy-900">Limited Time Offers</span> Available Now
-        </p>
-        <Wind className="w-4 h-4 text-navy-900 fill-navy-900" />
-      </motion.div>
-    </div>
-  );
-}
-
 function MobileCTA() {
   const whatsappLink = "https://wa.me/917056330400?text=I'm%20interested%20in%20your%20services";
   return (
@@ -404,8 +410,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <div className="min-h-screen bg-slate-50 selection:bg-orange-100 selection:text-orange-900">
-        <TopBanner />
-        <Navbar />
+        <Header />
         
         <main>
           <Suspense fallback={

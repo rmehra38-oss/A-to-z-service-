@@ -257,7 +257,7 @@ export default function FaqHubPage() {
   }, []);
 
   return (
-    <div className="bg-slate-50 min-h-screen pt-32 pb-24 relative overflow-hidden">
+    <div className="bg-slate-50 min-h-screen pt-36 md:pt-44 pb-24 relative overflow-hidden">
       {/* Decorative accents */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none"></div>
       

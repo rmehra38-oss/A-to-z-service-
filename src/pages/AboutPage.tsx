@@ -7,7 +7,7 @@ import heroTechniciansCleanImg from '../assets/images/hero_technicians_clean_178
 
 export default function AboutPage() {
   return (
-    <div className="pt-32 pb-20 bg-white">
+    <div className="pt-36 md:pt-44 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">

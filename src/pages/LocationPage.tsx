@@ -148,7 +148,7 @@ export default function LocationPage() {
   }, []);
 
   return (
-    <div className="bg-slate-50 min-h-screen pt-32 pb-24 relative overflow-hidden">
+    <div className="bg-slate-50 min-h-screen pt-36 md:pt-44 pb-24 relative overflow-hidden">
       
       {/* Visual accents */}
       <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-orange-500/5 to-transparent pointer-events-none"></div>

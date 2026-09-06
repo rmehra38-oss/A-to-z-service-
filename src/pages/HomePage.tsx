@@ -9,29 +9,55 @@ import { Link } from 'react-router-dom';
 import serviceRefrigeratorRepairImg from '../assets/images/service_refrigerator_repair_1781461875534.jpg';
 import serviceWashingMachineRepairImg from '../assets/images/service_washing_machine_repair_1781461892008.jpg';
 import serviceAcRepairImg from '../assets/images/service_ac_repair_1781461907198.jpg';
+import serviceMicrowaveRepairImg from '../assets/images/microwave_repair_1788705508248.jpg';
+import serviceGeyserRepairImg from '../assets/images/geyser_repair_1788705523331.jpg';
 import heroTechniciansLandscapeImg from '../assets/images/hero_technicians_landscape_1781462956080.jpg';
 
 const services = [
   {
     title: 'Refrigerator Repair',
-    description: 'Expert cooling solutions for all brands. We fix compressors, gas leaks, and thermostat issues.',
+    description: 'Expert cooling solutions for single & double door fridges. We fix compressors, gas leaks, and thermostat issues.',
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-fridge',
-    image: serviceRefrigeratorRepairImg
+    image: serviceRefrigeratorRepairImg,
+    link: '/fridge-repair',
+    tag: 'From ₹249'
   },
   {
     title: 'Washing Machine Repair',
-    description: 'Top load, front load, or semi-automatic. We resolve drum issues, motor failures, and PCB repairs.',
+    description: 'Top load, front load, or semi-automatic. We resolve drum vibration, motor failures, water drainage, and PCB repairs.',
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-washing',
-    image: serviceWashingMachineRepairImg
+    image: serviceWashingMachineRepairImg,
+    link: '/washing-machine-repair',
+    tag: 'From ₹299'
   },
   {
-    title: 'AC Repair & Service',
-    description: 'Stay cool with our professional AC servicing, gas charging, and installation services.',
+    title: 'Microwave Oven Repair',
+    description: 'Solo, Grill, and Convection microwave servicing. Magnetron replacement, touch membrane panel, sparks, and fuse repairs.',
+    icon: <Zap className="w-10 h-10 text-orange-500" />,
+    id: 'service-microwave',
+    image: serviceMicrowaveRepairImg,
+    link: '/microwave-repair',
+    tag: 'From ₹249'
+  },
+  {
+    title: 'Geyser & Water Heater',
+    description: 'Instant, storage, and gas geyser repair. Heavy-duty heating coils, thermostat replacement, tank descaling, and leak fixes.',
+    icon: <Zap className="w-10 h-10 text-orange-500" />,
+    id: 'service-geyser',
+    image: serviceGeyserRepairImg,
+    link: '/geyser-repair',
+    tag: 'From ₹249'
+  },
+  {
+    title: 'AC Repair & Jet Service',
+    description: 'Stay cool with our professional high-pressure jet AC servicing, gas charging (R32/R410A), and split AC installation.',
     icon: <Zap className="w-10 h-10 text-orange-500" />,
     id: 'service-ac',
-    image: serviceAcRepairImg
+    image: serviceAcRepairImg,
+    link: '/services',
+    tag: 'From ₹499'
   }
 ];
 
@@ -300,27 +326,34 @@ export default function HomePage() {
             <p className="text-lg text-slate-600 font-medium">We specialize in fixing high-end home appliances with precision and care. No matter the brand or model, we have the expertise to fix it.</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-10">
-            {services.map((service, index) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
               <motion.div
                 key={service.id}
-                whileHover={{ y: -15 }}
-                className="group bg-slate-50 rounded-[3rem] overflow-hidden border border-slate-100 hover:bg-white hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] transition-all duration-500"
+                whileHover={{ y: -10 }}
+                className="group bg-slate-50 rounded-[2.5rem] overflow-hidden border border-slate-100 hover:bg-white hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col justify-between"
               >
-                <div className="h-64 overflow-hidden relative">
-                  <img src={service.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                <div>
+                  <div className="h-60 overflow-hidden relative">
+                    <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent opacity-70 group-hover:opacity-85 transition-opacity"></div>
+                    <div className="absolute top-4 right-4 bg-orange-500 text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">
+                      {service.tag}
+                    </div>
+                  </div>
+                  <div className="p-8 pb-4">
+                    <h4 className="text-2xl font-black text-navy-900 mb-3 group-hover:text-orange-600 transition-colors">{service.title}</h4>
+                    <p className="text-slate-600 leading-relaxed font-medium text-sm">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="p-10">
-                  <h4 className="text-2xl font-black text-navy-900 mb-4">{service.title}</h4>
-                  <p className="text-slate-600 leading-relaxed mb-8 font-medium">
-                    {service.description}
-                  </p>
+                <div className="p-8 pt-0">
                   <Link 
-                    to="/services"
-                    className="flex items-center gap-3 font-black text-orange-500 group-hover:gap-5 transition-all uppercase tracking-widest text-sm"
+                    to={service.link}
+                    className="inline-flex items-center gap-2 font-black text-orange-500 group-hover:gap-4 transition-all uppercase tracking-wider text-xs pt-4 border-t border-slate-100 w-full"
                   >
-                    View All Services <ArrowRight className="w-5 h-5" />
+                    View Details & Rates <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </motion.div>

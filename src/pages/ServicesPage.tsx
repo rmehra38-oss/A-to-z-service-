@@ -3,6 +3,7 @@ import {
   MessageCircle, Phone, ArrowRight, CheckCircle2, Wind, Zap, Wrench, Settings, 
   ShieldCheck, Clock, Award, Star, ThumbsUp, HeartHandshake, Check
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const acServices = [
   {
@@ -237,6 +238,67 @@ export default function ServicesPage() {
                 <h4 className="text-2xl font-black text-navy-900 mb-4 relative z-10">{s.title}</h4>
                 <p className="text-slate-500 font-medium leading-relaxed relative z-10">{s.text}</p>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Other Appliance Repairs */}
+        <div className="mt-28">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-orange-500 font-black uppercase tracking-[0.25em] text-xs">Complete Home Care</span>
+            <h3 className="text-3xl md:text-5xl font-black text-navy-900 mt-2 mb-4 tracking-tight">
+              Other Appliance Repairs in Gurgaon
+            </h3>
+            <p className="text-slate-500 font-medium">
+              We also offer specialized doorstep repair for all your essential home appliances with certified engineers and 90-day parts warranty.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "Refrigerator Repair",
+                desc: "Single & double door cooling fixes, compressor, and gas refill.",
+                price: "From ₹249",
+                link: "/fridge-repair"
+              },
+              {
+                title: "Washing Machine",
+                desc: "Front & top load drum balancing, PCB repair, and motor faults.",
+                price: "From ₹299",
+                link: "/washing-machine-repair"
+              },
+              {
+                title: "Microwave Oven",
+                desc: "Magnetron heating, touchpad membrane, sparks, and fuse repairs.",
+                price: "From ₹249",
+                link: "/microwave-repair"
+              },
+              {
+                title: "Geyser & Water Heater",
+                desc: "Heavy-duty coil, thermostat replacement, descaling & leak repair.",
+                price: "From ₹249",
+                link: "/geyser-repair"
+              }
+            ].map((app, i) => (
+              <Link 
+                key={i} 
+                to={app.link}
+                className="p-8 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:border-orange-300 hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="text-xs font-black text-orange-600 bg-orange-50 px-3 py-1 rounded-full">{app.price}</span>
+                    <span className="text-[10px] uppercase font-bold text-slate-400">Doorstep</span>
+                  </div>
+                  <h4 className="text-xl font-black text-navy-900 group-hover:text-orange-600 transition-colors mb-2">{app.title}</h4>
+                  <p className="text-xs text-slate-500 font-medium leading-relaxed mb-6">{app.desc}</p>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-black text-orange-500 group-hover:gap-3 transition-all uppercase tracking-wider pt-4 border-t border-slate-100">
+                  <span>View Rates & Book</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>

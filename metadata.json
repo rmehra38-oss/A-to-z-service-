@@ -1,5 +1,8 @@
 {
   "name": "ASAP Gurgaon AC Service",
-  "description": "Expert AC repair and home appliance services in Gurgaon. Beat the Heat with our professional AC service starting at 399.",
-  "requestFramePermissions": []
+  "description": "Expert AC, Refrigerator, Washing Machine, Microwave, and Geyser repair services in Gurgaon with 60-minute doorstep arrival and 90-day warranty.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
